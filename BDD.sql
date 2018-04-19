@@ -3,14 +3,14 @@ drop table if exists reponses;
 drop table if exists questions;
 create table questions (
   numQuestion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  question    VARCHAR(50)
+  question    VARCHAR(1000)
 );
 
 create table reponses(
-  numReponse int not null AUTO_INCREMENT PRIMARY KEY,
+  numReponse     int not null AUTO_INCREMENT PRIMARY KEY,
   numeroQuestion int NOT NULL,
-  response VARCHAR(50),
-  bonneReponse boolean,
+  reponse        VARCHAR(50),
+  bonneReponse   boolean,
   CONSTRAINT fk_reponses_questions FOREIGN KEY (numeroQuestion) REFERENCES questions (numQuestion)
 );
 

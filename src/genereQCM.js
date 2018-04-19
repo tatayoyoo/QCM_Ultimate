@@ -1,20 +1,20 @@
 /**
  * Created by Yoann on 11/04/2018.
  */
-var numerosQuestion = [];
+var numerosQuestionFaite = [];
 var reponse = ["Bond OU une prase plus ou moins longue cest possible","Marcher","Contact","Pique"];
 var nbsQuestion = 2;
+var div_QCM;
 
 function chargeQCM(){
-    var div_QCM = document.createElement("div");
+    div_QCM = document.createElement("div");
     div_QCM.setAttribute("style","text-align : left;");
 
-    numerosQuestion = [];
+    numerosQuestionFaite = [];
 
-    for(var i=0; i<4;i++){
+    /*    for(var i=0; i<4;i++){
 
         var button = document.createElement("button");
-        button.setAttribute("src","img/dosdecartes_alliance_hearthstone_.png");
         button.setAttribute("name","A prendre de la BDD");
         button.setAttribute("id",""+i);
         button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
@@ -29,7 +29,33 @@ function chargeQCM(){
         div_QCM.appendChild(rep);
         div_QCM.appendChild(document.createElement("br"));
 
-    }
+     }*/
+
+    // var numQuestion = chargeQuestion();
+    // alert(numQuestion);
+    // if(numQuestion>0){
+    //     var reps = chargeReponse(numQuestion).split(",");
+    //     for(var i=0; reps.length; i++){
+    //         var button = document.createElement("button");
+    //         button.setAttribute("name",reps[i]);
+    //         button.setAttribute("id",""+i);
+    //         button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
+    //         button.setAttribute("onclick","envoieReponse()");
+    //         button.innerHTML=""+i;
+    //
+    //         var rep = document.createElement("span");
+    //         rep.innerHTML=reps[i];
+    //
+    //
+    //         div_QCM.appendChild(button);
+    //         div_QCM.appendChild(rep);
+    //         div_QCM.appendChild(document.createElement("br"));
+    //     }
+    // } else {
+    //     alert("Erreur : chargement question. Il faut contacter TATA YOYO !! xD")
+    // }
+
+    chargeQuestion();
 
     var valider = document.createElement("button");
 
@@ -52,12 +78,41 @@ function chargeQuestion(){
     xmlhttp.onreadystatechange =function(){
         if (xmlhttp.readyState===4 && xmlhttp.status===200){
             document.getElementById("champsQuestion").innerHTML=xmlhttp.responseText;
-            // chargeReponses(numQuestion);
+            chargeReponse(numQuestion);
         }
     };
     xmlhttp.open("GET","chargeQuestion.php?numQuestion="+numQuestion,true);
     xmlhttp.send();
 }
+function chargeReponse(numQuestion) {
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+
+            var reps = xmlhttp.responseText.split(",");
+            for (var i = 0; reps.length; i++) {
+                var button = document.createElement("button");
+                button.setAttribute("name", reps[i]);
+                button.setAttribute("id", "" + i);
+                button.setAttribute("style", "width : 25px; height : 25px; margin : 2% 2% 2% 20%");
+                button.setAttribute("onclick", "envoieReponse()");
+                button.innerHTML = "" + i;
+
+                var rep = document.createElement("span");
+                rep.innerHTML = reps[i];
+
+
+                div_QCM.appendChild(button);
+                div_QCM.appendChild(rep);
+                div_QCM.appendChild(document.createElement("br"));
+
+            }
+        }
+    };
+    xmlhttp.open("GET", "chargeReponses.php?numQuestion=" + numQuestion, true);
+    xmlhttp.send();
+}
+
 function valideReponse() {
 
 }

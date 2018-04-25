@@ -14,20 +14,20 @@ function chargeQCM(){
 
     /*    for(var i=0; i<4;i++){
 
-        var button = document.createElement("button");
-        button.setAttribute("name","A prendre de la BDD");
-        button.setAttribute("id",""+i);
-        button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
-        button.setAttribute("onclick","envoieReponse()");
-        button.innerHTML=""+i;
+     var button = document.createElement("button");
+     button.setAttribute("name","A prendre de la BDD");
+     button.setAttribute("id",""+i);
+     button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
+     button.setAttribute("onclick","envoieReponse()");
+     button.innerHTML=""+i;
 
-        var rep = document.createElement("span");
-        rep.innerHTML=reponse[i];
+     var rep = document.createElement("span");
+     rep.innerHTML=reponse[i];
 
 
-        div_QCM.appendChild(button);
-        div_QCM.appendChild(rep);
-        div_QCM.appendChild(document.createElement("br"));
+     div_QCM.appendChild(button);
+     div_QCM.appendChild(rep);
+     div_QCM.appendChild(document.createElement("br"));
 
      }*/
 
@@ -73,44 +73,58 @@ function chargeQCM(){
 
 function chargeQuestion(){
     numQuestion = getRandomInt(1,nbsQuestion+1);
+    chargeReponse(numQuestion);
 
-    xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange =function(){
-        if (xmlhttp.readyState===4 && xmlhttp.status===200){
-            document.getElementById("champsQuestion").innerHTML=xmlhttp.responseText;
-            chargeReponse(numQuestion);
+    xmlhttp1 = new XMLHttpRequest();
+    xmlhttp1.overrideMimeType("text/html; charset=iso-8859-1");
+    xmlhttp1.onreadystatechange = function () {
+        if (xmlhttp1.readyState === 4 && xmlhttp1.status === 200) {
+            var reponse = xmlhttp1.responseText;
+            document.getElementById("champsQuestion").innerHTML = reponse;
+
         }
     };
-    xmlhttp.open("GET","chargeQuestion.php?numQuestion="+numQuestion,true);
-    xmlhttp.send();
+    xmlhttp1.open("GET", "chargeQuestion.php?numQuestion=" + numQuestion, true);
+    xmlhttp1.send();
 }
 function chargeReponse(numQuestion) {
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+    xmlhttp2 = new XMLHttpRequest();
+    xmlhttp1.overrideMimeType("text/html; charset=iso-8859-1");
+    xmlhttp2.onreadystatechange = function () {
+        if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
 
-            var reps = xmlhttp.responseText.split(",");
-            for (var i = 0; reps.length; i++) {
-                var button = document.createElement("button");
-                button.setAttribute("name", reps[i]);
-                button.setAttribute("id", "" + i);
-                button.setAttribute("style", "width : 25px; height : 25px; margin : 2% 2% 2% 20%");
-                button.setAttribute("onclick", "envoieReponse()");
-                button.innerHTML = "" + i;
-
-                var rep = document.createElement("span");
-                rep.innerHTML = reps[i];
-
-
-                div_QCM.appendChild(button);
-                div_QCM.appendChild(rep);
-                div_QCM.appendChild(document.createElement("br"));
-
-            }
+            var reps = xmlhttp2.responseText.split(",");
+            afficheReponses(reps);
         }
     };
-    xmlhttp.open("GET", "chargeReponses.php?numQuestion=" + numQuestion, true);
-    xmlhttp.send();
+    xmlhttp2.open("GET", "chargeReponses.php?numQuestion=" + numQuestion, true);
+    xmlhttp2.send();
+}
+
+function afficheReponses(reps) {
+    var rep = document.createElement("span");
+    rep.innerHTML += reps[0] + " ";
+    rep.innerHTML += reps[1] + " ";
+    rep.innerHTML += reps[2] + " ";
+    rep.innerHTML += reps[3] + " ";
+
+    // for (var i = 0; reps.length; i++) {
+    //     var button = document.createElement("button");
+    //     button.setAttribute("name", reps[i]);
+    //     button.setAttribute("id", "" + i);
+    //     button.setAttribute("style", "width : 25px; height : 25px; margin : 2% 2% 2% 20%");
+    //     button.setAttribute("onclick", "envoieReponse()");
+    //     button.innerHTML = "" + i;
+    //
+    //     var rep = document.createElement("span");
+    //     rep.innerHTML = reps[i];
+    //
+    //
+    //     div_QCM.appendChild(button);
+    div_QCM.appendChild(rep);
+    //     div_QCM.appendChild(document.createElement("br"));
+    //
+    // }
 }
 
 function valideReponse() {

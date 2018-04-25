@@ -89,7 +89,7 @@ function chargeQuestion(){
 }
 function chargeReponse(numQuestion) {
     xmlhttp2 = new XMLHttpRequest();
-    xmlhttp1.overrideMimeType("text/html; charset=iso-8859-1");
+    xmlhttp2.overrideMimeType("text/html; charset=iso-8859-1");
     xmlhttp2.onreadystatechange = function () {
         if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
 

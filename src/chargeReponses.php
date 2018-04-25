@@ -10,6 +10,7 @@ $idQuestion = $_GET['numQuestion'];
 $con = mysqli_connect('localhost', 'root', '');
 mysqli_select_db($con, "question_ultimate");
 
+
 $sql = "SELECT * FROM reponses where numeroQuestion = " . $idQuestion . "";
 $result = mysqli_query($con, $sql);
 

@@ -49,15 +49,12 @@ function chargeReponse(numQuestion) {
 }
 
 function afficheReponses(reps) {
-    var rep = document.createElement("span");
-    rep.innerHTML += reps[0] + " ";
-    rep.innerHTML += reps[1] + " ";
-    rep.innerHTML += reps[2] + " ";
-    rep.innerHTML += reps[3] + " ";
+
 
     for (var i = 0; i < 4; i++) {
-        document.getElementById("label" + i).innerHTML = reps[i];
-        document.getElementById("choix" + i).setAttribute("value", "true");
+        var rep = reps[i].split(" ");
+        document.getElementById("label" + i).innerHTML = rep[0];
+        document.getElementById("choix" + i).setAttribute("value", rep[1]);
     }
 }
 

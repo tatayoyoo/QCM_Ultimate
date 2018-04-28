@@ -15,7 +15,7 @@ $sql = "SELECT * FROM reponses where numeroQuestion = " . $idQuestion . "";
 $result = mysqli_query($con, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
-    echo $row['reponse'] . ",";
+    echo $row['reponse'] . " " . $row['bonneReponse'] . ",";
 }
 mysqli_close($con);
 

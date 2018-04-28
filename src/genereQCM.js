@@ -12,62 +12,9 @@ function chargeQCM(){
 
     numerosQuestionFaite = [];
 
-    /*    for(var i=0; i<4;i++){
-
-     var button = document.createElement("button");
-     button.setAttribute("name","A prendre de la BDD");
-     button.setAttribute("id",""+i);
-     button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
-     button.setAttribute("onclick","envoieReponse()");
-     button.innerHTML=""+i;
-
-     var rep = document.createElement("span");
-     rep.innerHTML=reponse[i];
-
-
-     div_QCM.appendChild(button);
-     div_QCM.appendChild(rep);
-     div_QCM.appendChild(document.createElement("br"));
-
-     }*/
-
-    // var numQuestion = chargeQuestion();
-    // alert(numQuestion);
-    // if(numQuestion>0){
-    //     var reps = chargeReponse(numQuestion).split(",");
-    //     for(var i=0; reps.length; i++){
-    //         var button = document.createElement("button");
-    //         button.setAttribute("name",reps[i]);
-    //         button.setAttribute("id",""+i);
-    //         button.setAttribute("style","width : 25px; height : 25px; margin : 2% 2% 2% 20%");
-    //         button.setAttribute("onclick","envoieReponse()");
-    //         button.innerHTML=""+i;
-    //
-    //         var rep = document.createElement("span");
-    //         rep.innerHTML=reps[i];
-    //
-    //
-    //         div_QCM.appendChild(button);
-    //         div_QCM.appendChild(rep);
-    //         div_QCM.appendChild(document.createElement("br"));
-    //     }
-    // } else {
-    //     alert("Erreur : chargement question. Il faut contacter TATA YOYO !! xD")
-    // }
-
     chargeQuestion();
 
-    var valider = document.createElement("button");
 
-    valider.setAttribute("style","width : 120px; height : 60px; margin : 5% 5% 0% 20%;");
-    valider.setAttribute("onclick","colorCase()");
-    valider.innerHTML="Valider";
-
-    div_QCM.appendChild(document.createElement("br"));
-    div_QCM.appendChild(valider);
-
-
-    document.getElementById("body").appendChild(div_QCM);
 }
 
 
@@ -108,24 +55,12 @@ function afficheReponses(reps) {
     rep.innerHTML += reps[2] + " ";
     rep.innerHTML += reps[3] + " ";
 
-    // for (var i = 0; reps.length; i++) {
-    //     var button = document.createElement("button");
-    //     button.setAttribute("name", reps[i]);
-    //     button.setAttribute("id", "" + i);
-    //     button.setAttribute("style", "width : 25px; height : 25px; margin : 2% 2% 2% 20%");
-    //     button.setAttribute("onclick", "envoieReponse()");
-    //     button.innerHTML = "" + i;
-    //
-    //     var rep = document.createElement("span");
-    //     rep.innerHTML = reps[i];
-    //
-    //
-    //     div_QCM.appendChild(button);
-    div_QCM.appendChild(rep);
-    //     div_QCM.appendChild(document.createElement("br"));
-    //
-    // }
+    for (var i = 0; i < 4; i++) {
+        document.getElementById("label" + i).innerHTML = reps[i];
+        document.getElementById("choix" + i).setAttribute("value", "true");
+    }
 }
+
 
 function valideReponse() {
 

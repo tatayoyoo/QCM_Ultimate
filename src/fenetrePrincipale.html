@@ -11,11 +11,24 @@
     <h1>Questionnaire de validation du niveau de base des connaissances des règles de l'Ultimate.</h1>
 
     <!--<button onclick="chargeQuestion()">Commencer le questionnaire.</button>-->
-    <p id="champsQuestion">Il faut lancer la base de donnée. Ou alors il faut appeller TATA YOYO ! xD</p>
-
+    <br>
     <body id="body" onload="chargeQCM()">
 
+    <hr>
+    <form name="qcm1">
+        <b>Question :</b><br>
+        <p id="champsQuestion">Quelle couleur de disque est autorisée ?</p>
+        <br>
+        <b>Réponses :</b><br>
+        <br><input type="checkbox" name="choix" id="choix0"/><label for="choix0" id="label0">A</label>
+        <br><input type="checkbox" name="choix" id="choix1"/><label for="choix1" id="label1">B</label>
+        <br><input type="checkbox" name="choix" id="choix2"/><label for="choix2" id="label2">C</label>
+        <br><input type="checkbox" name="choix" id="choix3"/><label for="choix3" id="label3">D</label>
+        <br><br><br><!--value="1"-->
+        <input type="button" name="bouton" value="Valider">
 
+    </form>
+    <hr>
 
     </body>
 

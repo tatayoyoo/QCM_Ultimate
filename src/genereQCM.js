@@ -1,17 +1,20 @@
 /**
  * Created by Yoann on 11/04/2018.
  */
+
+var nbsDeQuestionAPosee = 2;
 var numerosQuestionFaite = [];
-var reponse = ["Bond OU une prase plus ou moins longue cest possible","Marcher","Contact","Pique"];
-var nbsQuestion = 2;
+var tabResultat = [];
+var nbsQuestionEnBDD = 2;
 var div_QCM;
+var score = 0;
 
 function chargeQCM(){
     div_QCM = document.createElement("div");
     div_QCM.setAttribute("style","text-align : left;");
 
     numerosQuestionFaite = [];
-
+    tabResultat = [];
     chargeQuestion();
 
 
@@ -19,7 +22,18 @@ function chargeQCM(){
 
 
 function chargeQuestion(){
-    numQuestion = getRandomInt(1,nbsQuestion+1);
+    var questionDejaPosee = false;
+    do {
+        numQuestion = getRandomInt(1, nbsQuestionEnBDD + 1);
+        for (var i = 1; i < nbsQuestionEnBDD + 1; i++) {
+            if (numerosQuestionFaite[i] == numQuestion) {
+                questionDejaPosee = true;
+            }
+        }
+    } while (questionDejaPosee);
+
+    numerosQuestionFaite.push(numQuestion);
+
     chargeReponse(numQuestion);
 
     xmlhttp1 = new XMLHttpRequest();
@@ -58,10 +72,32 @@ function afficheReponses(reps) {
     }
 }
 
+function valideReponse(tabRep, nbsRep) {
+    var rep = true;
+    for (var i = 0; i < nbsRep; i++) {
+        if (tabRep[i].value == 1 && tabRep[i].checked == false) rep = false;
+        if (tabRep[i].value == 0 && tabRep[i].checked == true) rep = false;
+    }
 
-function valideReponse() {
+    if (rep) {
+        score++;
+    }
 
+    tabResultat.push(rep);
+
+    if (numerosQuestionFaite.length == nbsDeQuestionAPosee) {
+        finQCM();
+    } else {
+        chargeQuestion()
+    }
 }
+
+
+function finQCM() {
+    alert("QCM finit !!!! \n Vous avez obtenue un score de " + score + " bonne(s) réponse(s) sur " + nbsDeQuestionAPosee);
+}
+
+
 
 function getRandomInt(min,max){
     var min = Math.ceil(min);

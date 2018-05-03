@@ -2,10 +2,10 @@
  * Created by Yoann on 11/04/2018.
  */
 
-var nbsDeQuestionAPosee = 2;
+var nbsDeQuestionAPosee = 10;
 var numerosQuestionFaite = [];
 var tabResultat = [];
-var nbsQuestionEnBDD = 2;
+var nbsQuestionEnBDD = 16;
 var div_QCM;
 var score = 0;
 
@@ -63,10 +63,8 @@ function chargeReponse(numQuestion) {
 }
 
 function afficheReponses(reps) {
-
-
     for (var i = 0; i < 4; i++) {
-        var rep = reps[i].split(" ");
+        var rep = reps[i].split(";");
         document.getElementById("label" + i).innerHTML = rep[0];
         document.getElementById("choix" + i).setAttribute("value", rep[1]);
     }

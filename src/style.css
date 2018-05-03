@@ -4,10 +4,8 @@ h1 {
 
 form {
     margin: 0 25%;
-
 }
-/*button {*/
-    /*width : 25px;*/
-    /*height : 25px;*/
-    /*margin : 2% 2% 2% 20%;*/
-/*}*/
+
+div {
+    margin: 5% 1%;
+}

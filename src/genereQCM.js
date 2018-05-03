@@ -19,19 +19,30 @@ function chargeQCM(){
 
 
 }
-
-
-function chargeQuestion(){
-    var questionDejaPosee = false;
-    do {
-        numQuestion = getRandomInt(1, nbsQuestionEnBDD + 1);
-        for (var i = 1; i < nbsQuestionEnBDD + 1; i++) {
+function questionDejaPosee(numQuestion) {
+    if (numerosQuestionFaite.length > 0) {
+        for (var i = 0; i < numerosQuestionFaite.length; i++) {
             if (numerosQuestionFaite[i] == numQuestion) {
-                questionDejaPosee = true;
+                return true;
             }
         }
-    } while (questionDejaPosee);
+    } else {
+        return false;
+    }
 
+    return false;
+}
+
+function chargeQuestion(){
+    var questionPosee = true;
+    var numQuestion;
+
+    while (questionPosee) {
+        numQuestion = getRandomInt(1, nbsQuestionEnBDD + 1);
+
+        questionPosee = questionDejaPosee(numQuestion);
+    }
+    alert("on ajoute la question : " + numQuestion + " \n tab : " + numerosQuestionFaite);
     numerosQuestionFaite.push(numQuestion);
 
     chargeReponse(numQuestion);

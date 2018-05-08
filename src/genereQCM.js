@@ -42,7 +42,6 @@ function chargeQuestion(){
 
         questionPosee = questionDejaPosee(numQuestion);
     }
-    alert("on ajoute la question : " + numQuestion + " \n tab : " + numerosQuestionFaite);
     numerosQuestionFaite.push(numQuestion);
 
     chargeReponse(numQuestion);

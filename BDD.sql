@@ -25,7 +25,7 @@ create table candidats(
 insert into candidats (numLicense) VALUES(090630001);
 
 
-INSERT INTO questions VALUES (1, "Quelle couleur de disque est autorisée pour jouer un match de compétition ?");
+INSERT INTO questions VALUES (1, "Quelle couleur de disque est recommandée pour jouer un match de compétition UNSS ?");
 
 INSERT INTO reponses VALUES ("", 1, "Blanc.", TRUE);
 INSERT INTO reponses VALUES ("", 1, "Bleu.", FALSE);
@@ -136,7 +136,7 @@ INSERT INTO reponses
 VALUES ("", 13, "Il faut attendre qu'un point supplémentaire soit marqué avant d'appliquer la règle du CAP.", TRUE);
 INSERT INTO reponses VALUES ("", 13, "La première équipe à atteindre 13 points remporte le match.", FALSE);
 INSERT INTO reponses VALUES ("", 13, "Le jeu s'arrête sur le score de 12 à 11.", FALSE);
-INSERT INTO reponses VALUES ("", 13, "Ce match peut terminer à égalité.", FALSE);
+INSERT INTO reponses VALUES ("", 13, "Le match peut terminer à égalité.", FALSE);
 
 
 INSERT INTO questions VALUES (14, "Les actions suivantes sont des exemples de bon Esprit Du Jeu :");
@@ -165,5 +165,6 @@ INSERT INTO reponses
 VALUES ("", 16, "Remplir la feuille d'Esprit Du jeu en respectant ce que l'on a dit pendant la ronde.", TRUE);
 INSERT INTO reponses VALUES ("", 16, "Appeler les fautes depuis la touche.", FALSE);
 INSERT INTO reponses VALUES ("", 16, "Applaudir les erreurs des adversaires.", FALSE);
+
 
 

@@ -73,10 +73,17 @@ function chargeReponse(numQuestion) {
 }
 
 function afficheReponses(reps) {
+    var tab = [];
     for (var i = 0; i < 4; i++) {
         var rep = reps[i].split(";");
-        document.getElementById("label" + i).innerHTML = rep[0];
-        document.getElementById("choix" + i).setAttribute("value", rep[1]);
+        tab.push(rep);
+    }
+    alert(tab);
+    shuffle(tab);
+    alert(tab);
+    for (var i = 0; i < 4; i++) {
+        document.getElementById("label" + i).innerHTML = tab[i][0];
+        document.getElementById("choix" + i).setAttribute("value", tab[i][1]);
     }
 }
 
@@ -112,4 +119,20 @@ function getRandomInt(min,max){
     var max = Math.floor(max);
 
     return Math.floor(Math.random()*(max-min)+min);
+}
+
+function shuffle(a) {
+    var j = 0;
+    var valI = '';
+    var valJ = valI;
+    var l = a.length - 1;
+    while (l > -1) {
+        j = Math.floor(Math.random() * l);
+        valI = a[l];
+        valJ = a[j];
+        a[l] = valJ;
+        a[j] = valI;
+        l = l - 1;
+    }
+    return a;
 }

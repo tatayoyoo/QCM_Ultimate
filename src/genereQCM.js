@@ -78,9 +78,7 @@ function afficheReponses(reps) {
         var rep = reps[i].split(";");
         tab.push(rep);
     }
-    alert(tab);
     shuffle(tab);
-    alert(tab);
     for (var i = 0; i < 4; i++) {
         document.getElementById("label" + i).innerHTML = tab[i][0];
         document.getElementById("choix" + i).setAttribute("value", tab[i][1]);

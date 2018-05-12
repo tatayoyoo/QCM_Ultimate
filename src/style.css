@@ -1,3 +1,15 @@
+body {
+    color: black;
+    background: white url(../img/disqueHerbe.jpg) no-repeat fixed 0 0;
+    background-size: 100%;
+
+    /*disqueHerbe.jpg*/
+}
+
+#div_principal {
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 0% 10% 0% 10%;
+}
 h1 {
     text-align : center ;
 }
